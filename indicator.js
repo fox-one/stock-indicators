@@ -127,17 +127,24 @@ var Indicator = (function(){
    *
    * @method MA
    * @param {Array} ticks
-   * @param Number days
+   * @param {Number} days
    * 一维数组类型，每个元素为当前Tick的收盘价格
    * @return {Array} mas
    */
   var ma = function(ticks, days) {
     var maSum = 0, p = 0;
-    var mas = [];
+    var mas = [], m;
+    var interval = days - 1;
     for (var i = 0; i < ticks.length; i++) {
       maSum += ticks[i];
-      ma = maSum / days;
-      mas.push(ma);
+      if (i >= interval) {
+        maSum -= p;
+        m = maSum / days;
+        mas.push(m);
+        p = ticks[i - interval];
+      } else {
+        mas.push(null)
+      }
     }
     return mas;
   };
@@ -148,12 +155,14 @@ var Indicator = (function(){
    *
    * @method BOLL
    * @param {Array} ticks
+   * @param {Number} maDays
    * 一维数组类型，每个元素为当前Tick的收盘价格
    * @return {Object} 返回一个包含upper mid lower属性的对象,每个属性对应的类型为{Array[Number]}
    */
-  var boll = function(ticks) {
+  var boll = function(ticks, maDays) {
     //移动平均线周期为20
-    var maDays = 20, tickBegin = maDays - 1, maSum = 0, p = 0;
+    maDays = maDays || 20;
+    var tickBegin = maDays - 1, maSum = 0, p = 0;
     var ups = [], mas = [], lows = [];
     for (var i = 0; i < ticks.length; i ++) {
       var c = ticks[i], ma, md, bstart, mdSum;
