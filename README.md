@@ -72,7 +72,7 @@
 
 <a name="BOLL"></a>
 
-## BOLL(ticks) ⇒ <code>Object</code>
+## BOLL(ticks, days) ⇒ <code>Object</code>
 计算boll指标,ma的周期默认为20日
 
 **Kind**: global function  
