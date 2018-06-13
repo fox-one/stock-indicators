@@ -7,14 +7,14 @@
 <dt><a href="#MACD">MACD(ticks)</a> ⇒ <code>Object</code></dt>
 <dd><p>计算macd指标,快速和慢速移动平均线的周期分别取12和26</p>
 </dd>
-<dt><a href="#KDJ">KDJ(ticks)</a> ⇒ <code>Object</code></dt>
-<dd><p>计算kdj指标,rsv的周期为9日</p>
+<dt><a href="#KDJ">KDJ(ticks， days)</a> ⇒ <code>Object</code></dt>
+<dd><p>计算kdj指标,rsv的周期为days，默认为9日</p>
 </dd>
 <dt><a href="#MA">MA(ticks, Number)</a> ⇒ <code>Array</code></dt>
 <dd><p>计算移动平均线指标, ma的周期为days</p>
 </dd>
-<dt><a href="#BOLL">BOLL(ticks)</a> ⇒ <code>Object</code></dt>
-<dd><p>计算boll指标,ma的周期为20日</p>
+<dt><a href="#BOLL">BOLL(ticks， days)</a> ⇒ <code>Object</code></dt>
+<dd><p>计算boll指标,ma的周期为days,默认为20日</p>
 </dd>
 <dt><a href="#RSI">RSI(ticks)</a> ⇒ <code>Object</code></dt>
 <dd><p>计算rsi指标,分别返回以6日，12日，24日为参考基期的RSI值</p>
@@ -47,8 +47,8 @@
 
 <a name="KDJ"></a>
 
-## KDJ(ticks) ⇒ <code>Object</code>
-计算kdj指标,rsv的周期为9日
+## KDJ(ticks，days) ⇒ <code>Object</code>
+计算kdj指标,rsv的周期默认为9日
 
 **Kind**: global function  
 **Returns**: <code>Object</code> - 返回一个包含k d j属性的对象,每个属性对应的类型为{Array[Number]}  
@@ -56,10 +56,10 @@
 | Param | Type | Description |
 | --- | --- | --- |
 | ticks | <code>Array</code> | 二维数组类型，其中内层数组包含三个元素值，第一个值表示当前Tick的最高价格，第二个表示当前Tick的最低价格，第三个表示当前Tick的收盘价格 |
-
+| days | <code>Number</code> | 周期 默认为 9 日
 <a name="MA"></a>
 
-## MA(ticks, Number) ⇒ <code>Array</code>
+## MA(ticks, days) ⇒ <code>Array</code>
 计算移动平均线指标, ma的周期为days
 
 **Kind**: global function  
@@ -67,13 +67,13 @@
 
 | Param | Type | Description |
 | --- | --- | --- |
-| ticks | <code>Array</code> |  |
-| Number |  | days 一维数组类型，每个元素为当前Tick的收盘价格 |
+| ticks | <code>Array</code> | 一维数组类型，每个元素为当前Tick的收盘价格 |
+| days | <code>Number</code> | 周期 |
 
 <a name="BOLL"></a>
 
 ## BOLL(ticks) ⇒ <code>Object</code>
-计算boll指标,ma的周期为20日
+计算boll指标,ma的周期默认为20日
 
 **Kind**: global function  
 **Returns**: <code>Object</code> - 返回一个包含upper mid lower属性的对象,每个属性对应的类型为{Array[Number]}  
@@ -81,6 +81,7 @@
 | Param | Type | Description |
 | --- | --- | --- |
 | ticks | <code>Array</code> | 一维数组类型，每个元素为当前Tick的收盘价格 |
+| days | <code>Number</code> | 周期 |
 
 <a name="RSI"></a>
 

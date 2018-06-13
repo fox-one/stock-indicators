@@ -79,15 +79,17 @@ var Indicator = (function(){
 
   /**
    *
-   * 计算kdj指标,rsv的周期为9日
+   * 计算kdj指标,rsv的默认周期为9日
    *
    * @method KDJ
    * @param {Array} ticks
+   * @param {Number} days
    * 二维数组类型，其中内层数组包含三个元素值，第一个值表示当前Tick的最高价格，第二个表示当前Tick的最低价格，第三个表示当前Tick的收盘价格
    * @return {Object} 返回一个包含k d j属性的对象,每个属性对应的类型为{Array[Number]}
    */
-  var kdj = function (ticks) {
-    var nineDaysTicks = [], days = 9, rsvs = [];
+  var kdj = function (ticks, days) {
+    days = days || 9;
+    var nineDaysTicks = [], rsvs = [];
     var ks = [], ds = [], js = [];
     var lastK, lastD, curK, curD;
     var maxAndMin, max, min;
@@ -151,7 +153,7 @@ var Indicator = (function(){
 
   /**
    *
-   * 计算boll指标,ma的周期为20日
+   * 计算boll指标,ma的周期默认为20日
    *
    * @method BOLL
    * @param {Array} ticks
